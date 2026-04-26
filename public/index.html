@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HireMeMaybe | AI Career Coach</title>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+
+    <script src="https://unpkg.com/@phosphor-icons/web"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+
+<body>
+    <nav class="navbar glass-panel">
+        <div class="logo">HireMeMaybe<span>.</span></div>
+        <ul class="nav-links">
+            <li><a href="#home">Home</a></li>
+            <li><a href="#about">Our AI Engine</a></li>
+            <li><a href="#features">Features</a></li>
+        </ul>
+    </nav>
+
+    <main class="app-container" id="home">
+        <header class="hero">
+            <h1>Elevate your Career<span class="dot">.</span></h1>
+            <p>Your Actionable AI Career Coach powered by IBM Cloud.</p>
+        </header>
+        <section id="about" class="about-section glass-panel">
+            <div class="about-content">
+                <h2>Built on Cutting-Edge Technology</h2>
+                <p>HireMeMaybe isn't just a basic keyword scanner. We utilize a proprietary **Natural Language
+                    Understanding (NLU)** pipeline backed by IBM Watson Cloud Architecture, processing your resume
+                    natively to find complex semantic skill gaps.</p>
+                <div class="about-metrics">
+                    <div class="a-metric">
+                        <h3>99.9%</h3>
+                        <span>API Uptime</span>
+                    </div>
+                    <div class="a-metric">
+                        <h3>14,204</h3>
+                        <span>Resumes Analyzed</span>
+                    </div>
+                    <div class="a-metric">
+                        <h3>42%</h3>
+                        <span>Avg. ATS Boost</span>
+                    </div>
+                </div>
+            </div>
+            <div class="about-image">
+                <img src="assets/hero.png" alt="AI Cloud Server Illustration" onerror="this.style.display='none'">
+            </div>
+        </section>
+        <section id="features" class="features-section">
+            <div class="feature-card glass-panel">
+                <img src="assets/target.png" alt="Target Feedback" onerror="this.style.display='none'">
+                <h3>Targeted Feedback</h3>
+                <p>Find exactly which hard and soft skills are missing for your target role.</p>
+            </div>
+            <div class="feature-card glass-panel">
+                <img src="assets/data.png" alt="Data Analytics" onerror="this.style.display='none'">
+                <h3>Data-Driven Analysis</h3>
+                <p>We generate stunning interactive radar maps of your strengths.</p>
+            </div>
+            <div class="feature-card glass-panel">
+                <img src="assets/projects.png" alt="Portfolio Projects" onerror="this.style.display='none'">
+                <h3>Actionable Growth</h3>
+                <p>Our AI inherently recommends unique portfolio projects to build and learn.</p>
+            </div>
+        </section>
+
+        <div class="divider"></div>
+        <section id="upload-section" class="glass-panel main-upload">
+            <h2>Let's find your skill gaps.</h2>
+            <div class="settings">
+                <label for="targetRole">What is your Target Job Role?</label>
+                <input type="text" id="targetRole" value="Software Engineer" placeholder="e.g. Data Analyst">
+            </div>
+
+            <div id="dropzone" class="dropzone">
+                <i class="ph ph-file-pdf"></i>
+                <h3>Drag & Drop your Resume</h3>
+                <p>or click to browse files</p>
+                <input type="file" id="file-input" accept="application/pdf" hidden>
+            </div>
+            <button id="analyze-btn" class="primary-btn" disabled>Start Analysis Engine</button>
+        </section>
+        <section id="loading-section" class="hidden glass-panel text-center">
+            <div class="loader"></div>
+            <h3 id="loading-text">Extracting document layers...</h3>
+        </section>
+        <section id="dashboard" class="hidden">
+            <div class="score-card glass-panel">
+                <h2>ATS Impact Score</h2>
+                <div class="score-circle">
+                    <h1 id="score-val">0</h1>
+                    <span>/100</span>
+                </div>
+            </div>
+            <div class="dashboard-grid">
+                <div class="left-column">
+                    <div class="chart-container glass-panel">
+                        <h3><i class="ph ph-chart-polar"></i> Skill Performance Radar</h3>
+                        <canvas id="radarChart"></canvas>
+                    </div>
+                    <div class="ibm-card glass-panel" style="margin-bottom: 30px;">
+                        <h3><i class="ph ph-cpu"></i> Extracted Skills (IBM Watson)</h3>
+                        <p style="font-size: 1.05rem; line-height: 1.6;"><strong>Hard Skills:</strong> <span
+                                id="ibm-hard-skills" style="color: var(--primary);">...</span></p>
+                        <p style="font-size: 1.05rem; line-height: 1.6; margin-top: 10px;"><strong>Soft Skills:</strong>
+                            <span id="ibm-soft-skills" style="color: var(--primary);">...</span></p>
+                    </div>
+                    <div class="gaps-card glass-panel">
+                        <h3><i class="ph ph-target"></i> Critical Skill Gaps</h3>
+                        <ul id="missing-skills-list"></ul>
+                    </div>
+                </div>
+                <div class="right-column">
+                    <div class="projects-card glass-panel">
+                        <h3><i class="ph ph-rocket"></i> Actionable Growth</h3>
+                        <p class="subtitle">Projects to build this weekend:</p>
+                        <div id="projects-container"></div>
+                    </div>
+                    <div class="feedback-card glass-panel">
+                        <h3><i class="ph ph-headphones"></i> AI Coach Feedback</h3>
+                        <p id="feedback-text"></p>
+                        <audio id="coach-audio" controls
+                            style="width: 100%; margin: 15px 0; border-radius: 8px; display: none;"></audio>
+                        <button class="secondary-btn" onclick="location.reload()">Analyze Another Resume</button>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <script src="script.js"></script>
+</body>
+
+</html>
