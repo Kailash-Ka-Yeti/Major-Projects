@@ -67,7 +67,31 @@ const getMockData = (targetRole) => ({
             description: "Replace standard REST endpoints with a unified GraphQL gateway to show advanced data fetching capabilities."
         }
     ],
-    feedback_summary: `Your resume has excellent formatting! To become a top-tier candidate for ${targetRole} roles, you need to prove you can handle scalable infrastructure. Focus on containerization next!`
+    feedback_summary: `Your resume has excellent formatting! To become a top-tier candidate for ${targetRole} roles, you need to prove you can handle scalable infrastructure. Focus on containerization next!`,
+    cover_letter: "Dear Hiring Manager,\n\nI am writing to express my strong interest in the Backend Engineer position. I bring a deep understanding of Node.js and Express.js, combined with a passion for web development. While I am actively expanding my knowledge in microservices and Kubernetes, my ability to rapidly adapt and build robust REST APIs makes me a strong addition to your engineering team.\n\nThank you for your time.",
+    bullet_point_improvements: [
+        {
+            original: "Managed backend servers and APIs.",
+            improved: "Optimized Node.js backend servers and REST APIs, improving system uptime and reducing API response latency by 30%."
+        }
+    ],
+    linkedin_optimization: {
+        headline: `Backend Software Engineer | Node.js & REST APIs | Transitioning to Microservices`,
+        about: `Passionate Software Engineer specializing in backend development with Node.js and Express.js. Dedicated to building scalable, high-performance web applications and currently exploring cloud-native architectures like Docker and Kubernetes.`
+    },
+    mock_interview_questions: [
+        "Can you explain a time you optimized a slow-performing REST API?",
+        "How would you approach migrating a monolithic Node.js application to a microservices architecture?",
+        "What are your strategies for ensuring robust security in web applications?"
+    ],
+    salary_band: "$110,000 - $145,000",
+    market_demand_chart: [
+        { skill: "Node.js", demand_score_out_of_100: 95 },
+        { skill: "Docker", demand_score_out_of_100: 88 },
+        { skill: "GraphQL", demand_score_out_of_100: 82 },
+        { skill: "REST APIs", demand_score_out_of_100: 90 },
+        { skill: "Kubernetes", demand_score_out_of_100: 85 }
+    ]
 });
 
 app.post('/api/analyze', upload.single('resume'), async (req, res) => {
@@ -127,7 +151,26 @@ app.post('/api/analyze', upload.single('resume'), async (req, res) => {
             "project_suggestions": [
                 {"title": "Project specific title", "description": "Short explanation of how this bridges the missing skill gap"}
             ],
-            "feedback_summary": "A 2-sentence encouraging summary of their next steps to be spoken aloud."
+            "feedback_summary": "A 2-sentence encouraging summary of their next steps to be spoken aloud.",
+            "cover_letter": "A 3-paragraph compelling cover letter incorporating their strengths and addressing the gap for the target role.",
+            "bullet_point_improvements": [
+                {"original": "A weak bullet from their resume", "improved": "A much stronger, XYZ formula version of that bullet"}
+            ],
+            "linkedin_optimization": {
+                "headline": "A highly optimized LinkedIn headline",
+                "about": "A short, engaging LinkedIn about section incorporating the keywords"
+            },
+            "mock_interview_questions": [
+                "3 tough interview questions focusing on their missing skills to test them"
+            ],
+            "salary_band": "A string representing the estimated market salary band, e.g., $100k - $120k",
+            "market_demand_chart": [
+                {"skill": "Skill 1", "demand_score_out_of_100": 90},
+                {"skill": "Skill 2", "demand_score_out_of_100": 85},
+                {"skill": "Skill 3", "demand_score_out_of_100": 70},
+                {"skill": "Skill 4", "demand_score_out_of_100": 95},
+                {"skill": "Skill 5", "demand_score_out_of_100": 80}
+            ]
         }
         `;
 

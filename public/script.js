@@ -10,6 +10,7 @@ const loadingText = document.getElementById('loading-text');
 
 let selectedFile = null;
 let chartInstance = null;
+let barChartInstance = null;
 
 dropzone.addEventListener('click', () => fileInput.click());
 
@@ -138,6 +139,51 @@ function renderDashboard(data) {
     } else {
         audioEl.style.display = 'none';
     }
+
+    // New Features
+    if(data.salary_band) document.getElementById('salary-val').innerText = data.salary_band;
+    
+    if(data.linkedin_optimization) {
+        document.getElementById('linkedin-headline').innerText = data.linkedin_optimization.headline;
+        document.getElementById('linkedin-about').innerText = data.linkedin_optimization.about;
+    }
+
+    const bulletsContainer = document.getElementById('bullets-container');
+    bulletsContainer.innerHTML = "";
+    if(data.bullet_point_improvements) {
+        data.bullet_point_improvements.forEach(bullet => {
+            const div = document.createElement('div');
+            div.style.marginBottom = "15px";
+            div.innerHTML = `
+                <div style="background: rgba(239, 68, 68, 0.1); padding: 10px; border-left: 3px solid #ef4444; margin-bottom: 5px; border-radius: 4px;">
+                    <strong style="color:#ef4444; font-size: 0.85rem;">Before:</strong><br/> <span style="font-size: 0.95rem;">${bullet.original}</span>
+                </div>
+                <div style="background: rgba(16, 185, 129, 0.1); padding: 10px; border-left: 3px solid #10b981; border-radius: 4px;">
+                    <strong style="color:#10b981; font-size: 0.85rem;">After (XYZ Formula):</strong><br/> <span style="font-size: 0.95rem;">${bullet.improved}</span>
+                </div>
+            `;
+            bulletsContainer.appendChild(div);
+        });
+    }
+
+    const interviewList = document.getElementById('interview-list');
+    interviewList.innerHTML = "";
+    if(data.mock_interview_questions) {
+        data.mock_interview_questions.forEach(q => {
+            const li = document.createElement('li');
+            li.innerHTML = `<i class="ph ph-question" style="color:var(--primary); margin-right:8px;"></i> ${q}`;
+            li.style.marginBottom = "10px";
+            interviewList.appendChild(li);
+        });
+    }
+
+    if(data.cover_letter) {
+        document.getElementById('cover-letter-text').value = data.cover_letter;
+    }
+
+    if(data.market_demand_chart) {
+        renderBarChart(data.market_demand_chart);
+    }
 }
 
 function renderChart(score) {
@@ -196,3 +242,72 @@ function renderChart(score) {
         }
     });
 }
+
+function renderBarChart(chartData) {
+    const ctx = document.getElementById('barChart').getContext('2d');
+    if (barChartInstance) barChartInstance.destroy();
+
+    const labels = chartData.map(d => d.skill);
+    const data = chartData.map(d => d.demand_score_out_of_100);
+
+    barChartInstance = new Chart(ctx, {
+        type: 'bar',
+        data: {
+            labels: labels,
+            datasets: [{
+                label: 'Market Demand (out of 100)',
+                data: data,
+                backgroundColor: 'rgba(0, 114, 239, 0.6)',
+                borderColor: '#0072ef',
+                borderWidth: 1,
+                borderRadius: 4
+            }]
+        },
+        options: {
+            responsive: true,
+            maintainAspectRatio: false,
+            scales: {
+                y: {
+                    beginAtZero: true,
+                    max: 100,
+                    grid: { color: 'rgba(255, 255, 255, 0.1)' },
+                    ticks: { color: '#64748b' }
+                },
+                x: {
+                    grid: { display: false },
+                    ticks: { color: '#64748b' }
+                }
+            },
+            plugins: {
+                legend: { display: false }
+            },
+            animation: {
+                duration: 2000,
+                easing: 'easeOutBounce'
+            }
+        }
+    });
+}
+
+document.getElementById('export-btn').addEventListener('click', () => {
+    const dashboardElement = document.getElementById('dashboard');
+    const opt = {
+      margin:       0.5,
+      filename:     'HireMeMaybe_Report.pdf',
+      image:        { type: 'jpeg', quality: 0.98 },
+      html2canvas:  { scale: 2, useCORS: true, logging: false },
+      jsPDF:        { unit: 'in', format: 'letter', orientation: 'portrait' }
+    };
+
+    // Temporarily hide the buttons before exporting
+    const exportBtn = document.getElementById('export-btn');
+    const analyzeAnotherBtn = document.querySelector('.secondary-btn[onclick="location.reload()"]');
+    if(exportBtn) exportBtn.style.display = 'none';
+    if(analyzeAnotherBtn) analyzeAnotherBtn.style.display = 'none';
+
+    html2pdf().set(opt).from(dashboardElement).save().then(() => {
+        // Restore buttons
+        if(exportBtn) exportBtn.style.display = 'inline-flex';
+        if(analyzeAnotherBtn) analyzeAnotherBtn.style.display = 'inline-block';
+    });
+});
