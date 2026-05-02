@@ -303,7 +303,7 @@ document.getElementById('export-btn').addEventListener('click', () => {
       filename:     'HireMeMaybe_Report.pdf',
       image:        { type: 'jpeg', quality: 0.98 },
       html2canvas:  { scale: 2, useCORS: true, logging: false },
-      jsPDF:        { unit: 'in', format: 'letter', orientation: 'portrait' },
+      jsPDF:        { unit: 'in', format: 'a4', orientation: 'portrait' },
       pagebreak:    { mode: 'avoid-all', before: '.page-break' }
     };
 
