@@ -291,7 +291,8 @@ document.getElementById('export-btn').addEventListener('click', () => {
       filename:     'HireMeMaybe_Report.pdf',
       image:        { type: 'jpeg', quality: 0.98 },
       html2canvas:  { scale: 2, useCORS: true, logging: false },
-      jsPDF:        { unit: 'in', format: 'letter', orientation: 'portrait' }
+      jsPDF:        { unit: 'in', format: 'letter', orientation: 'portrait' },
+      pagebreak:    { mode: 'avoid-all', before: '.page-break' }
     };
 
     // Temporarily hide the buttons before exporting
@@ -299,8 +300,11 @@ document.getElementById('export-btn').addEventListener('click', () => {
     const analyzeAnotherBtn = document.querySelector('.secondary-btn[onclick="location.reload()"]');
     if(exportBtn) exportBtn.style.display = 'none';
     if(analyzeAnotherBtn) analyzeAnotherBtn.style.display = 'none';
+    
+    dashboardElement.classList.add('pdf-mode');
 
     html2pdf().set(opt).from(dashboardElement).save().then(() => {
+        dashboardElement.classList.remove('pdf-mode');
         // Restore buttons
         if(exportBtn) exportBtn.style.display = 'inline-flex';
         if(analyzeAnotherBtn) analyzeAnotherBtn.style.display = 'inline-block';

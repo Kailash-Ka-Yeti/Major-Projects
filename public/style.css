@@ -359,3 +359,40 @@ ul#missing-skills-list li {
     .about-section, .dashboard-grid { grid-template-columns: 1fr; }
     .features-section { grid-template-columns: 1fr; }
 }
+
+/* PDF Export Formatting */
+.pdf-mode {
+    background: white !important;
+}
+.pdf-mode * {
+    color: #000 !important; /* Better contrast for PDF */
+}
+.pdf-mode .dashboard-grid {
+    display: block !important;
+}
+.pdf-mode .left-column, .pdf-mode .right-column {
+    display: block !important;
+    width: 100% !important;
+}
+.pdf-mode .glass-panel {
+    break-inside: avoid !important;
+    page-break-inside: avoid !important;
+    margin-bottom: 20px !important;
+    box-shadow: none !important;
+    border: 1px solid #ddd !important;
+    background: #fff !important;
+    color: #000 !important;
+}
+.pdf-mode .glass-panel * {
+    color: #000 !important;
+}
+.pdf-mode h1, .pdf-mode h2, .pdf-mode h3, .pdf-mode i {
+    color: #0072ef !important;
+}
+.pdf-mode .score-card {
+    background: #fff !important;
+    border: 2px solid #0072ef !important;
+}
+.pdf-mode .score-circle h1 {
+    color: #0072ef !important;
+}
