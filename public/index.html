@@ -92,17 +92,15 @@
             <h3 id="loading-text">Extracting document layers...</h3>
         </section>
         <section id="dashboard" class="hidden">
-            <div class="dashboard-header" style="display:flex; justify-content:space-between; align-items:center; margin-bottom: 20px;">
+            <div class="dashboard-header" style="display:flex; justify-content:space-between; align-items:center; margin-bottom: 30px;">
                 <h2>Your Career Dashboard</h2>
-                <button id="export-btn" class="primary-btn"><i class="ph ph-download-simple"></i> Export PDF Report</button>
+                <button id="export-btn" class="primary-btn" style="width: auto; padding: 12px 24px;"><i class="ph ph-download-simple"></i> Export PDF</button>
             </div>
-            <div class="top-cards-row" style="display:flex; gap: 20px; margin-bottom: 20px; flex-wrap: wrap;">
-                <div class="score-card glass-panel" style="flex: 1; min-width: 250px;">
-                    <h2>ATS Impact Score</h2>
-                    <div class="score-circle">
-                        <h1 id="score-val">0</h1>
-                        <span>/100</span>
-                    </div>
+            <div class="score-card glass-panel" style="margin-bottom: 30px;">
+                <h2>ATS Impact Score</h2>
+                <div class="score-circle">
+                    <h1 id="score-val">0</h1>
+                    <span>/100</span>
                 </div>
             </div>
             <div class="dashboard-grid">
@@ -111,11 +109,11 @@
                         <h3><i class="ph ph-chart-polar"></i> Skill Performance Radar</h3>
                         <canvas id="radarChart"></canvas>
                     </div>
-                    <div class="chart-container glass-panel" style="margin-bottom: 30px;">
+                    <div class="chart-container glass-panel">
                         <h3><i class="ph ph-trend-up"></i> Market Demand for Skills</h3>
                         <canvas id="barChart"></canvas>
                     </div>
-                    <div class="ibm-card glass-panel" style="margin-bottom: 30px;">
+                    <div class="ibm-card glass-panel">
                         <h3><i class="ph ph-cpu"></i> Extracted Skills (IBM Watson)</h3>
                         <p style="font-size: 1.05rem; line-height: 1.6;"><strong>Hard Skills:</strong> <span
                                 id="ibm-hard-skills" style="color: var(--primary);">...</span></p>
@@ -128,32 +126,32 @@
                     </div>
                 </div>
                 <div class="right-column">
-                    <div class="feedback-card glass-panel" style="margin-bottom: 30px;">
+                    <div class="feedback-card glass-panel">
                         <h3><i class="ph ph-headphones"></i> AI Coach Feedback</h3>
                         <p id="feedback-text"></p>
                         <audio id="coach-audio" controls
                             style="width: 100%; margin: 15px 0; border-radius: 8px; display: none;"></audio>
                     </div>
-                    <div class="projects-card glass-panel" style="margin-bottom: 30px;">
+                    <div class="projects-card glass-panel">
                         <h3><i class="ph ph-rocket"></i> Actionable Growth</h3>
                         <p class="subtitle">Projects to build this weekend:</p>
                         <div id="projects-container"></div>
                     </div>
-                    <div class="linkedin-card glass-panel" style="margin-bottom: 30px;">
+                    <div class="linkedin-card glass-panel">
                         <h3><i class="ph ph-linkedin-logo"></i> LinkedIn Profile Optimizer</h3>
                         <p><strong>Headline:</strong> <span id="linkedin-headline">...</span></p>
                         <p style="margin-top:10px;"><strong>About:</strong> <span id="linkedin-about">...</span></p>
                     </div>
-                    <div class="bullet-card glass-panel" style="margin-bottom: 30px;">
+                    <div class="bullet-card glass-panel">
                         <h3><i class="ph ph-list-dashes"></i> Resume Bullet Optimizer</h3>
                         <div id="bullets-container"></div>
                     </div>
-                    <div class="interview-card glass-panel" style="margin-bottom: 30px;">
+                    <div class="interview-card glass-panel">
                         <h3><i class="ph ph-microphone-stage"></i> Mock Interview Simulator</h3>
                         <p class="subtitle">Be ready for these questions:</p>
                         <ul id="interview-list"></ul>
                     </div>
-                    <div style="text-align: right;">
+                    <div style="text-align: right; margin-top: 10px;">
                         <button class="secondary-btn" onclick="location.reload()">Analyze Another Resume</button>
                     </div>
                 </div>
