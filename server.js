@@ -83,6 +83,10 @@ const getMockData = (targetRole) => ({
         "How would you approach migrating a monolithic Node.js application to a microservices architecture?",
         "What are your strategies for ensuring robust security in web applications?"
     ],
+    certifications: [
+        { "name": "AWS Certified Solutions Architect", "reason": "Validates your ability to design scalable cloud infrastructure." },
+        { "name": "CKAD: Certified Kubernetes Application Developer", "reason": "Directly addresses your gap in container orchestration." }
+    ],
     market_demand_chart: [
         { skill: "Node.js", demand_score_out_of_100: 95 },
         { skill: "Docker", demand_score_out_of_100: 88 },
@@ -159,6 +163,9 @@ app.post('/api/analyze', upload.single('resume'), async (req, res) => {
             },
             "mock_interview_questions": [
                 "3 tough interview questions focusing on their missing skills to test them"
+            ],
+            "certifications": [
+                { "name": "Certification Name", "reason": "Short reason why it bridges their skill gaps" }
             ],
             "market_demand_chart": [
                 {"skill": "Skill 1", "demand_score_out_of_100": 90},

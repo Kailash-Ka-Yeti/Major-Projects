@@ -176,6 +176,18 @@ function renderDashboard(data) {
         });
     }
 
+    const certContainer = document.getElementById('cert-container');
+    certContainer.innerHTML = "";
+    if(data.certifications) {
+        data.certifications.forEach(cert => {
+            const div = document.createElement('div');
+            div.className = 'project-item';
+            div.style.marginBottom = "15px";
+            div.innerHTML = `<h4>${cert.name}</h4><p style="font-size:0.9rem;">${cert.reason}</p>`;
+            certContainer.appendChild(div);
+        });
+    }
+
     if(data.market_demand_chart) {
         renderBarChart(data.market_demand_chart);
     }
