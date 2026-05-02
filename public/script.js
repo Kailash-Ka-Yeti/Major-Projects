@@ -105,8 +105,8 @@ function renderDashboard(data) {
 
   
     if (data.ibm_keywords) {
-        document.getElementById('ibm-hard-skills').innerText = data.ibm_keywords.entities.length ? data.ibm_keywords.entities.join(', ') : "None Detected";
-        document.getElementById('ibm-soft-skills').innerText = data.ibm_keywords.concepts.length ? data.ibm_keywords.concepts.join(', ') : "None Detected";
+        const allKeywords = [...data.ibm_keywords.entities, ...data.ibm_keywords.concepts];
+        document.getElementById('ibm-extracted-info').innerText = allKeywords.length ? allKeywords.join(', ') : "None Detected";
     }
 
     
