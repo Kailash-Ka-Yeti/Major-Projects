@@ -141,7 +141,6 @@ function renderDashboard(data) {
     }
 
     // New Features
-    if(data.salary_band) document.getElementById('salary-val').innerText = data.salary_band;
     
     if(data.linkedin_optimization) {
         document.getElementById('linkedin-headline').innerText = data.linkedin_optimization.headline;
@@ -175,10 +174,6 @@ function renderDashboard(data) {
             li.style.marginBottom = "10px";
             interviewList.appendChild(li);
         });
-    }
-
-    if(data.cover_letter) {
-        document.getElementById('cover-letter-text').value = data.cover_letter;
     }
 
     if(data.market_demand_chart) {

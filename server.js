@@ -68,7 +68,6 @@ const getMockData = (targetRole) => ({
         }
     ],
     feedback_summary: `Your resume has excellent formatting! To become a top-tier candidate for ${targetRole} roles, you need to prove you can handle scalable infrastructure. Focus on containerization next!`,
-    cover_letter: "Dear Hiring Manager,\n\nI am writing to express my strong interest in the Backend Engineer position. I bring a deep understanding of Node.js and Express.js, combined with a passion for web development. While I am actively expanding my knowledge in microservices and Kubernetes, my ability to rapidly adapt and build robust REST APIs makes me a strong addition to your engineering team.\n\nThank you for your time.",
     bullet_point_improvements: [
         {
             original: "Managed backend servers and APIs.",
@@ -84,7 +83,6 @@ const getMockData = (targetRole) => ({
         "How would you approach migrating a monolithic Node.js application to a microservices architecture?",
         "What are your strategies for ensuring robust security in web applications?"
     ],
-    salary_band: "$110,000 - $145,000",
     market_demand_chart: [
         { skill: "Node.js", demand_score_out_of_100: 95 },
         { skill: "Docker", demand_score_out_of_100: 88 },
@@ -152,7 +150,6 @@ app.post('/api/analyze', upload.single('resume'), async (req, res) => {
                 {"title": "Project specific title", "description": "Short explanation of how this bridges the missing skill gap"}
             ],
             "feedback_summary": "A 2-sentence encouraging summary of their next steps to be spoken aloud.",
-            "cover_letter": "A 3-paragraph compelling cover letter incorporating their strengths and addressing the gap for the target role.",
             "bullet_point_improvements": [
                 {"original": "A weak bullet from their resume", "improved": "A much stronger, XYZ formula version of that bullet"}
             ],
@@ -163,7 +160,6 @@ app.post('/api/analyze', upload.single('resume'), async (req, res) => {
             "mock_interview_questions": [
                 "3 tough interview questions focusing on their missing skills to test them"
             ],
-            "salary_band": "A string representing the estimated market salary band, e.g., $100k - $120k",
             "market_demand_chart": [
                 {"skill": "Skill 1", "demand_score_out_of_100": 90},
                 {"skill": "Skill 2", "demand_score_out_of_100": 85},
