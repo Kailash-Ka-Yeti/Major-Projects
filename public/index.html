@@ -140,14 +140,16 @@
                         <p><strong>Headline:</strong> <span id="linkedin-headline">...</span></p>
                         <p style="margin-top:10px;"><strong>About:</strong> <span id="linkedin-about">...</span></p>
                     </div>
-                    <div class="bullet-card glass-panel">
-                        <h3><i class="ph ph-list-dashes"></i> Resume Bullet Optimizer</h3>
-                        <div id="bullets-container"></div>
-                    </div>
-                    <div class="interview-card glass-panel">
-                        <h3><i class="ph ph-microphone-stage"></i> Mock Interview Simulator</h3>
-                        <p class="subtitle">Be ready for these questions:</p>
-                        <ul id="interview-list"></ul>
+                    <div style="display: flex; gap: 30px; flex-wrap: wrap;">
+                        <div class="bullet-card glass-panel" style="flex: 1; min-width: 200px;">
+                            <h3><i class="ph ph-list-dashes"></i> Resume Bullet Optimizer</h3>
+                            <div id="bullets-container"></div>
+                        </div>
+                        <div class="interview-card glass-panel" style="flex: 1; min-width: 200px;">
+                            <h3><i class="ph ph-microphone-stage"></i> Mock Interview Simulator</h3>
+                            <p class="subtitle">Be ready for these questions:</p>
+                            <ul id="interview-list"></ul>
+                        </div>
                     </div>
                     <div style="text-align: right; margin-top: 10px;">
                         <button class="secondary-btn" onclick="location.reload()">Analyze Another Resume</button>
