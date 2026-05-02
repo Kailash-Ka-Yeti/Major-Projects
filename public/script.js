@@ -152,14 +152,14 @@ function renderDashboard(data) {
     if(data.bullet_point_improvements) {
         data.bullet_point_improvements.forEach(bullet => {
             const div = document.createElement('div');
-            div.style.marginBottom = "15px";
+            div.style.marginBottom = "12px";
+            div.style.padding = "10px";
+            div.style.background = "rgba(16, 185, 129, 0.05)";
+            div.style.borderLeft = "3px solid #10b981";
+            div.style.borderRadius = "4px";
             div.innerHTML = `
-                <div style="background: rgba(239, 68, 68, 0.1); padding: 10px; border-left: 3px solid #ef4444; margin-bottom: 5px; border-radius: 4px;">
-                    <strong style="color:#ef4444; font-size: 0.85rem;">Before:</strong><br/> <span style="font-size: 0.95rem;">${bullet.original}</span>
-                </div>
-                <div style="background: rgba(16, 185, 129, 0.1); padding: 10px; border-left: 3px solid #10b981; border-radius: 4px;">
-                    <strong style="color:#10b981; font-size: 0.85rem;">After (XYZ Formula):</strong><br/> <span style="font-size: 0.95rem;">${bullet.improved}</span>
-                </div>
+                <p style="font-size: 0.85rem; color: #ef4444; text-decoration: line-through; margin-bottom: 4px;">${bullet.original}</p>
+                <p style="font-size: 0.95rem; color: #10b981; line-height: 1.4;">✨ ${bullet.improved}</p>
             `;
             bulletsContainer.appendChild(div);
         });
