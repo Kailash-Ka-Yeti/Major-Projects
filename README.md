@@ -2,8 +2,6 @@
 
 A sophisticated AI-powered career coaching platform that uses Google Gemini and IBM Watson to analyze resumes and provide real-time audio coaching.
 
-## 🚀 How to Run Locally
-
 This project requires **Node.js** installed on your machine.
 
 1. **Install Dependencies:**
